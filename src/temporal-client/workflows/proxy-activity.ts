@@ -1,6 +1,6 @@
 import { proxyActivities } from '@temporalio/workflow';
 
-export async function proxyWorkflow(
+export async function proxyActivity(
   taskQueue: string,
   activity: string,
   args: any,

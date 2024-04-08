@@ -1,1 +1,2 @@
-export * from './proxy.workflow';
+export * from './proxy-activity';
+export * from './proxy-workflow';
