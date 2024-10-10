@@ -11,10 +11,7 @@ export class TemporalConfigService {
   }
 
   private static generateTlsConfig() {
-    if (
-      process.env['TEMPORAL_CERT'] &&
-      process.env['TEMPORAL_CERT'].toString() === 'true'
-    ) {
+    if (process.env['TEMPORAL_CERT']) {
       return {
         clientCertPair: {
           crt: Buffer.from(process.env['TEMPORAL_CERT']),
