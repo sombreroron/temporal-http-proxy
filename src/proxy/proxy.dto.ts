@@ -1,4 +1,5 @@
 import { IsArray, IsObject, IsOptional } from 'class-validator';
+import { SearchAttributes } from '@temporalio/client';
 
 export class ProxyDto {
   @IsArray()
@@ -6,5 +7,5 @@ export class ProxyDto {
 
   @IsOptional()
   @IsObject()
-  searchAttributes?: Record<any, any>;
+  searchAttributes?: SearchAttributes;
 }

@@ -32,10 +32,9 @@ export class ProxyController {
     @Body() body: ProxyDto,
   ) {
     return this.temporalClient.client.workflow.start(proxyWorkflow, {
-      args: [taskQueue, workflow, body.args],
+      args: [taskQueue, workflow, body.args, body.searchAttributes],
       workflowId: randomUUID(),
       taskQueue: Queue.PROXY,
-      searchAttributes: body.searchAttributes,
       retry: { maximumAttempts: 1 },
     });
   }
