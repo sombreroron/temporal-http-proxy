@@ -2,8 +2,8 @@ import { Body, Controller, Param, Post } from '@nestjs/common';
 import { ProxyDto } from './proxy.dto';
 import { TemporalClientService } from '../temporal-client/temporal-client.service';
 import { randomUUID } from 'crypto';
-import { proxyActivity } from '../temporal-client/workflows/proxy-activity';
 import { Queue } from '../enum/queue.enum';
+import { proxyActivity } from '../temporal-client/workflows/proxy-activity';
 import { proxyWorkflow } from '../temporal-client/workflows/proxy-workflow';
 
 @Controller()
@@ -20,6 +20,7 @@ export class ProxyController {
       args: [taskQueue, activity, body.args],
       workflowId: randomUUID(),
       taskQueue: Queue.PROXY,
+      searchAttributes: body.searchAttributes,
       retry: { maximumAttempts: 1 },
     });
   }
@@ -34,6 +35,7 @@ export class ProxyController {
       args: [taskQueue, workflow, body.args],
       workflowId: randomUUID(),
       taskQueue: Queue.PROXY,
+      searchAttributes: body.searchAttributes,
       retry: { maximumAttempts: 1 },
     });
   }
