@@ -14,8 +14,8 @@ export class TemporalConfigService {
     if (process.env['TEMPORAL_CERT']) {
       return {
         clientCertPair: {
-          crt: Buffer.from(process.env['TEMPORAL_CERT']),
-          key: Buffer.from(process.env['TEMPORAL_KEY']),
+          crt: Buffer.from(process.env['TEMPORAL_CERT'].replace(/\\n/g, '\n')),
+          key: Buffer.from(process.env['TEMPORAL_KEY'].replace(/\\n/g, '\n')),
         },
       };
     }
